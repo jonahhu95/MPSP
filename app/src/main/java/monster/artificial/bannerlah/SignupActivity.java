@@ -36,7 +36,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         mAuth = FirebaseAuth.getInstance();
-        menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
+        menuActivity = new Intent(getApplicationContext(), ApplicationActivity.class);
     }
 
     @Override
@@ -59,10 +59,11 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 String email = String.valueOf(emailText.getText());
                 String password = String.valueOf(passwordText.getText());
                 String rePassword = String.valueOf(passwordReText.getText());
-                if(email.isEmpty() || password.isEmpty() || rePassword.isEmpty())
+                String name = String.valueOf(nameText.getText());
+                if(email.isEmpty() || password.isEmpty() || rePassword.isEmpty() || name.isEmpty())
                     break;
                 if(password.equals(rePassword))
-                    signup(email, password);
+                    signup(email, password, name);
                 else
                     Toast.makeText(getApplicationContext(), "Passwords doesn't match.", Toast.LENGTH_SHORT).show();
                 break;
@@ -72,7 +73,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private void signup(String email, String password){
+    private void signup(String email, String password, String name){
         signUpButton.setEnabled(false);
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
