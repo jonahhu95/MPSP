@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "532401661754",
+    "firebase_url": "https://mpsp-2ae04.firebaseio.com",
+    "project_id": "mpsp-2ae04",
+    "storage_bucket": "mpsp-2ae04.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532401661754:android:22e324245952adf6",
+        "android_client_info": {
+          "package_name": "monster.artificial.bannerlah"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "532401661754-25hths2m58oamu97s05l7acog1iose0h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "monster.artificial.bannerlah",
+            "certificate_hash": "c46ae6284a649471dd9a999787cfbb06a7486ce1"
+          }
+        },
+        {
+          "client_id": "532401661754-8cs7ub4qo80as4of21bl5omkjhe9bd6d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjWi7yYmRWiCMwXXlGjORngWRVdzvUDTs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "532401661754-8cs7ub4qo80as4of21bl5omkjhe9bd6d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
