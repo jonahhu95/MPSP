@@ -6,7 +6,11 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.CAMERA" />
+=======
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+>>>>>>> 4fa5c6a78e6bb74604a9639bc9c48331749bb972
 
     <application
         android:allowBackup="true"
@@ -26,7 +30,11 @@
         </activity>
         <activity android:name=".SignupActivity" />
         <activity android:name=".MenuActivity" />
+<<<<<<< HEAD
         <activity android:name=".QRScannerActivity"></activity>
+=======
+        <activity android:name=".ApplicationActivity"></activity>
+>>>>>>> 4fa5c6a78e6bb74604a9639bc9c48331749bb972
     </application>
 
 </manifest>

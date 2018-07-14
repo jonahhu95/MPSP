@@ -10,9 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.ybq.android.spinkit.style.DoubleBounce;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -41,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
         signUpActivity = new Intent(getApplicationContext() , SignupActivity.class);
-        menuActivity = new Intent(getApplicationContext() , MenuActivity.class);
+        menuActivity = new Intent(getApplicationContext() , ApplicationActivity.class);
     }
 
     @Override
@@ -58,12 +60,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.shared_preferences), MODE_PRIVATE).edit();
                                 editor.putString("userID", currentUser.getUid());
                                 editor.apply();
+                                loginSuccess();
                             } else {
-                                // Handle error -> task.getException();
+                                Toast.makeText(getApplicationContext(), "Login failed.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
-            loginSuccess();
+
         }
         loginButton = (Button)findViewById(R.id.btn_login);
         emailText = (EditText)findViewById(R.id.input_email);
@@ -71,7 +74,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signupLink = (TextView)findViewById(R.id.link_signup);
         loginButton.setOnClickListener(this);
         signupLink.setOnClickListener(this);
-
     }
 
     @Override
