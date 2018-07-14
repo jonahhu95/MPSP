@@ -44,5 +44,13 @@ public class StatusActivity extends AppCompatActivity {
                 startActivity(mapIntent);
             }
         });
+
+        mDoneBtn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(StatusActivity.this, ReportActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }
