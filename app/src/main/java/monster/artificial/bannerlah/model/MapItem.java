@@ -1,9 +1,7 @@
-package monster.artificial.bannerlah;
+package monster.artificial.bannerlah.model;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.clustering.ClusterItem;
-
-import net.sharewire.googlemapsclustering.ClusterItem;
 
 public class MapItem implements ClusterItem {
     private final LatLng mPosition;
