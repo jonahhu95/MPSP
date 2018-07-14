@@ -2,7 +2,11 @@
     <string name="app_name">BannerLah</string>
 
     <string name="shared_preferences">SP</string>
+<<<<<<< HEAD
     <string name="validate">Validate Banner</string>
     <string name="location">Banner Locations</string>
     <string name="report">Reports</string>
+=======
+    <string name="back">Back</string>
+>>>>>>> abe6616899bf7e1cd21eb52a1caf6a87fb9ad3d6
 </resources>
