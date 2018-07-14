@@ -11,7 +11,6 @@ import com.zql.android.cardmenulib.CardMenuItem;
 public class MenuActivity extends AppCompatActivity implements CardMenu.OnCardMenuSelecetedListener {
 
     private FrameLayout mMainContent;
-    private TextView mContentText;
     int[] names = new int[]{R.string.validate, R.string.location, R.string.report};
     int[] icons = new int[]{R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
 
@@ -19,7 +18,6 @@ public class MenuActivity extends AppCompatActivity implements CardMenu.OnCardMe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        mContentText = (TextView) findViewById(R.id.content_text);
         mMainContent = (FrameLayout) findViewById(R.id.main_content);
 
         CardMenu menu = (CardMenu) findViewById(R.id.cardMenu);
@@ -34,7 +32,6 @@ public class MenuActivity extends AppCompatActivity implements CardMenu.OnCardMe
             case 0:
             case 1:
             case 2:
-                mContentText.setText(names[item.getIndex()]);
         }
     }
 }
