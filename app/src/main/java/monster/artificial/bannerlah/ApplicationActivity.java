@@ -6,12 +6,10 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,8 +33,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import pl.aprilapps.easyphotopicker.EasyImage;
-
 
 public class ApplicationActivity extends AppCompatActivity {
 
@@ -46,7 +42,7 @@ public class ApplicationActivity extends AppCompatActivity {
     private InkView ink_1, ink_2;
     private TextView signature1, signature2;
     private ImageView imageView;
-    private final int CAMERA_REQUEST = 3456;
+    private final int STORAGE_REQUEST = 3456;
     private final int PICK_IMAGE = 4567;
 
     @Override
@@ -74,7 +70,7 @@ public class ApplicationActivity extends AppCompatActivity {
                     if (!(checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
                             PackageManager.PERMISSION_GRANTED)) {
                         ActivityCompat.requestPermissions(ApplicationActivity.this,
-                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, CAMERA_REQUEST);
+                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_REQUEST);
                         return;
                     }
                 }
@@ -185,7 +181,7 @@ public class ApplicationActivity extends AppCompatActivity {
                 .setType(FormElement.Type.DATE)
                 .setRequired(true)
                 .setErrorMessage("Required"));
-        formObjects_1.add(new FormElement().setHint("Lokasi sepanduk / Kain Pampang akan dipamerkan")
+        formObjects_1.add(new FormElement().setHint("Lokasi sepanduk / Kain pampang akan dipamerkan")
                 .setTag("Banner Location")
                 .setType(FormElement.Type.TEXT)
                 .setRequired(true)
@@ -195,6 +191,12 @@ public class ApplicationActivity extends AppCompatActivity {
                 .setType(FormElement.Type.TEXT)
                 .setRequired(true)
                 .setErrorMessage("Required"));
+        formObjects_1.add(new FormElement().setHint("Kuantiti sepanduk / Kain pampang")
+                .setTag("Banner Quantity")
+                .setType(FormElement.Type.NUMBER)
+                .setRequired(true)
+                .setErrorMessage("Required"));
+
         formObjects_1.add(new FormHeader()
                 .setTitle("Pengakuan Pemohon (Tandatangan)"));
         formBuilder_1.build(formObjects_1);
@@ -253,7 +255,7 @@ public class ApplicationActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
-            case CAMERA_REQUEST:
+            case STORAGE_REQUEST:
                 if (grantResults.length > 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(this, "Please grant camera permission to use app", Toast.LENGTH_LONG).show();
                 }
