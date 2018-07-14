@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
         signUpActivity = new Intent(getApplicationContext() , SignupActivity.class);
-        menuActivity = new Intent(getApplicationContext() , QRScannerActivity.class);
+        menuActivity = new Intent(getApplicationContext() , MenuActivity.class);
         d = new MaterialDialog.Builder(this)
                 .progress(false, 0, false)
                 .show();
@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             if (task.isSuccessful()) {
                                 String idToken = task.getResult().getToken();
                                 SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.shared_preferences), MODE_PRIVATE).edit();
-                                editor.putString("userID", currentUser.getUid());
+                                editor.putString("userID", currentUser.getEmail());
                                 editor.apply();
                                 loginSuccess();
                             } else {

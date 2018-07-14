@@ -36,7 +36,6 @@ public class QRScannerActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         scannerView = findViewById(R.id.scanner_view);
         statusActivity = new Intent(getApplicationContext() , StatusActivity.class);
-        mode = 1;
     }
 
     private void checkPermission() {
@@ -120,10 +119,10 @@ public class QRScannerActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         if (mode == 0){
-                            if (result.getText().equals("https:\\mpsp.gov.my\\")){
+                            if (result.getText().equals("http://mpsp.gov.my")){
                                 showSuccess();
                             }else{
-
+                                showFailure();
                             }
                         }else{
                             startValidateActivity();
@@ -160,6 +159,20 @@ public class QRScannerActivity extends AppCompatActivity {
                     }
                 })
                 .onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        mCodeScanner.startPreview();
+                    }
+                })
+                .show();
+    }
+
+    private void showFailure(){
+        new MaterialDialog.Builder(this)
+                .title("Warning")
+                .content("License already activated")
+                .positiveText("Next")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                         mCodeScanner.startPreview();
