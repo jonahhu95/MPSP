@@ -16,7 +16,7 @@ public class StatusActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
-
+        getSupportActionBar().setTitle("Banner Details");
         mDurationTV = findViewById(R.id.durationTV);
         mLocationTV = findViewById(R.id.locationTV);
         mTitleTV = findViewById(R.id.titleTV);

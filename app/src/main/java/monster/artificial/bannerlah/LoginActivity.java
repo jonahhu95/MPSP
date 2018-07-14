@@ -112,6 +112,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(logTag, "Email Sign In: success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.shared_preferences), MODE_PRIVATE).edit();
+                            editor.putString("userID", user.getEmail());
+                            editor.apply();
                             loginSuccess();
                         } else {
                             // If sign in fails, display a message to the user.
