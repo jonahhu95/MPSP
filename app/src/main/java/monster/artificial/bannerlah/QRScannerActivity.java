@@ -1,6 +1,7 @@
 package monster.artificial.bannerlah;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ public class QRScannerActivity extends AppCompatActivity {
     private CodeScannerView scannerView;
     private final int CAMERA_REQUEST = 3456;
     private int mode = 0;
+    private Intent statusActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,8 @@ public class QRScannerActivity extends AppCompatActivity {
         checkPermission();
         getSupportActionBar().hide();
         scannerView = findViewById(R.id.scanner_view);
+        statusActivity = new Intent(getApplicationContext() , StatusActivity.class);
+        mode = 1;
     }
 
     private void checkPermission() {
@@ -116,8 +120,13 @@ public class QRScannerActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         if (mode == 0){
-                            Toast.makeText(QRScannerActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
-                            showSuccess();
+                            if (result.getText().equals("https:\\mpsp.gov.my\\")){
+                                showSuccess();
+                            }else{
+
+                            }
+                        }else{
+                            startValidateActivity();
                         }
                         // Pass result to next avtivity here
                     }
@@ -128,6 +137,11 @@ public class QRScannerActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mCodeScanner.startPreview();
+                if (mode == 0){
+                    showSuccess();
+                }else {
+                    startValidateActivity();
+                }
             }
         });
     }
@@ -137,11 +151,24 @@ public class QRScannerActivity extends AppCompatActivity {
                 .title("License activation")
                 .content("Confirm activate license?")
                 .positiveText("Yes")
+                .negativeText("No")
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                         Toast.makeText(getApplicationContext(), "License Activated!", Toast.LENGTH_LONG).show();
+                        mCodeScanner.startPreview();
                     }
-                }).show();
+                })
+                .onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        mCodeScanner.startPreview();
+                    }
+                })
+                .show();
+    }
+
+    private void startValidateActivity(){
+        startActivity(statusActivity);
     }
 }

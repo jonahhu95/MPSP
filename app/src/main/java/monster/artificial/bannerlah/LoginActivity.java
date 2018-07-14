@@ -14,6 +14,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.ybq.android.spinkit.style.DoubleBounce;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,6 +23,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GetTokenResult;
+
+import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 
 /**
  * A login screen that offers login via email/password.
@@ -34,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText emailText;
     private EditText passwordText;
     private TextView signupLink;
+    private MaterialDialog d;
 
     private String logTag = "LoginActivity";
 
@@ -44,6 +49,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mAuth = FirebaseAuth.getInstance();
         signUpActivity = new Intent(getApplicationContext() , SignupActivity.class);
         menuActivity = new Intent(getApplicationContext() , QRScannerActivity.class);
+        d = new MaterialDialog.Builder(this)
+                .progress(false, 0, false)
+                .show();
     }
 
     @Override
@@ -68,6 +76,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     });
 
         }
+        d.dismiss();
         loginButton = (Button)findViewById(R.id.btn_login);
         emailText = (EditText)findViewById(R.id.input_email);
         passwordText = (EditText)findViewById(R.id.input_password);
