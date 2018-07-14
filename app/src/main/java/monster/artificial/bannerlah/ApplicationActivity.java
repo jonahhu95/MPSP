@@ -185,7 +185,7 @@ public class ApplicationActivity extends AppCompatActivity {
                 .setType(FormElement.Type.DATE)
                 .setRequired(true)
                 .setErrorMessage("Required"));
-        formObjects_1.add(new FormElement().setHint("Lokasi sepanduk / Kain Pampang akan dipamerkan")
+        formObjects_1.add(new FormElement().setHint("Lokasi sepanduk / Kain pampang akan dipamerkan")
                 .setTag("Banner Location")
                 .setType(FormElement.Type.TEXT)
                 .setRequired(true)
@@ -195,6 +195,12 @@ public class ApplicationActivity extends AppCompatActivity {
                 .setType(FormElement.Type.TEXT)
                 .setRequired(true)
                 .setErrorMessage("Required"));
+        formObjects_1.add(new FormElement().setHint("Kuantiti sepanduk / Kain pampang")
+                .setTag("Banner Quantity")
+                .setType(FormElement.Type.NUMBER)
+                .setRequired(true)
+                .setErrorMessage("Required"));
+
         formObjects_1.add(new FormHeader()
                 .setTitle("Pengakuan Pemohon (Tandatangan)"));
         formBuilder_1.build(formObjects_1);

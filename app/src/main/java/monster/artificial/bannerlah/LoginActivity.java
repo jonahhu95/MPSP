@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
         signUpActivity = new Intent(getApplicationContext() , SignupActivity.class);
-        menuActivity = new Intent(getApplicationContext() , ApplicationActivity.class);
+        menuActivity = new Intent(getApplicationContext() , MenuActivity.class);
     }
 
     @Override

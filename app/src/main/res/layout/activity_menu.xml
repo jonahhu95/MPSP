@@ -6,4 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".MenuActivity">
 
+    <com.zql.android.cardmenulib.CardMenu
+        android:id="@+id/cardMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+        </FrameLayout>
+    </com.zql.android.cardmenulib.CardMenu>
+
 </android.support.constraint.ConstraintLayout>

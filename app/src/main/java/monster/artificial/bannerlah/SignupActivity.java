@@ -36,7 +36,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         mAuth = FirebaseAuth.getInstance();
-        menuActivity = new Intent(getApplicationContext(), ApplicationActivity.class);
+        menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
     }
 
     @Override
