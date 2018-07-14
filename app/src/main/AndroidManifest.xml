@@ -29,7 +29,6 @@
         </activity>
         <activity android:name=".SignupActivity" />
         <activity android:name=".MenuActivity" />
-<<<<<<< HEAD
         <activity android:name=".QRScannerActivity" />
         <activity android:name=".ApplicationActivity" />
         <!--<activity android:name=".MapActivity" />-->
@@ -37,17 +36,12 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDtCb1xDhz37o-1C1sjCGp4muVl7E8fuuA"/>
-        <!-- SHA1: 39:61:48:D2:F7:53:81:11:E8:9E:52:E6:55:58:C3:D9:65:50:C4:D2 -->
-=======
         <activity android:name=".StatusActivity" />
-        <activity android:name=".QRScannerActivity" />
-        <activity android:name=".ApplicationActivity" />
         <activity android:name=".ReportActivity"
             android:label="Aduan">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".StatusActivity"/>
         </activity>
->>>>>>> b4de1111e2bac6d29be2a3ac2c7be3cba4f49e77
     </application>
 
 </manifest>
