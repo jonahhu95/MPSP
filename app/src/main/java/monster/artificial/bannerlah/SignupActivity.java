@@ -1,6 +1,7 @@
 package monster.artificial.bannerlah;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,7 +36,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         mAuth = FirebaseAuth.getInstance();
-//        menuActivity = new Intent(getApplicationContext(), DisclaimerActivity.class);
+        menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
     }
 
     @Override
@@ -81,7 +82,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(logTag, "Email Sign up: success");
                             FirebaseUser user = mAuth.getCurrentUser();
-
+                            SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.shared_preferences), MODE_PRIVATE).edit();
+                            editor.putString("userID", user.getUid());
+                            editor.apply();
                             if(user!=null){
                                 signUpSuccess();
                             }

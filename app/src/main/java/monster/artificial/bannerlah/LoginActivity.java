@@ -1,6 +1,7 @@
 package monster.artificial.bannerlah;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
@@ -40,21 +41,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
         signUpActivity = new Intent(getApplicationContext() , SignupActivity.class);
+        menuActivity = new Intent(getApplicationContext() , MenuActivity.class);
     }
 
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        final FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser!=null){
             currentUser.getIdToken(true)
                     .addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
                         public void onComplete(@NonNull Task<GetTokenResult> task) {
                             if (task.isSuccessful()) {
                                 String idToken = task.getResult().getToken();
-                                // Send token to your backend via HTTPS
-                                // ...
+                                SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.shared_preferences), MODE_PRIVATE).edit();
+                                editor.putString("userID", currentUser.getUid());
+                                editor.apply();
                             } else {
                                 // Handle error -> task.getException();
                             }
