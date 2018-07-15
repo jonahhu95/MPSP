@@ -1,37 +1,91 @@
 package monster.artificial.bannerlah;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.FrameLayout;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
 
-import com.zql.android.cardmenulib.CardMenu;
-import com.zql.android.cardmenulib.CardMenuItem;
+import java.util.Arrays;
+import java.util.List;
 
-public class MenuActivity extends AppCompatActivity implements CardMenu.OnCardMenuSelecetedListener {
+public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private FrameLayout mMainContent;
-    int[] names = new int[]{R.string.validate, R.string.location, R.string.report};
-    int[] icons = new int[]{R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
+    private List<String> function_mpsp = Arrays.asList("Mengesahkan Banner", "Lokasi Banner", "Aduan");
+    private List<String> function_applicant = Arrays.asList("Permohonan Memasang", "Pengaktifan Lesen");
+    private Button button1, button2, button3, button4;
+    private int mode = 0;
+    private Intent qRScanner, application;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        mMainContent = (FrameLayout) findViewById(R.id.main_content);
+        button1 = (Button) findViewById(R.id.button1);
+        button2 = (Button) findViewById(R.id.button2);
+        button3 = (Button) findViewById(R.id.button3);
+        button4 = (Button) findViewById(R.id.button4);
+        Button[] buttons = {button1,button2,button3, button4};
+        SharedPreferences prefs = getSharedPreferences(getString(R.string.shared_preferences), MODE_PRIVATE);
+        String user = prefs.getString("userID", null);
+        if (user.equals("email1@email.com")){
+            mode = 0;
+            int n;
+            for(n = 0; n < function_mpsp.size(); n++){
+                buttons[n].setText(function_mpsp.get(n));
+                buttons[n].setOnClickListener(this);
+            }
+            while(n < buttons.length){
+                buttons[n].setVisibility(View.INVISIBLE);
+                n++;
+            }
 
-        CardMenu menu = (CardMenu) findViewById(R.id.cardMenu);
+        }else{
+            mode = 1;
+            int n;
+            for(n = 0; n < function_applicant.size(); n++){
+                buttons[n].setText(function_applicant.get(n));
+                buttons[n].setOnClickListener(this);
+            }
+            while(n < buttons.length){
+                buttons[n].setVisibility(View.INVISIBLE);
+                n++;
+            }
+        }
 
-        menu.initMenus(names, icons, null);
-        menu.setOnCardMenuSelectedListener(this);
+
     }
 
+
     @Override
-    public void cardMenuSelected(CardMenuItem item) {
-        switch (item.getIndex()) {
-            case 0:
-            case 1:
-            case 2:
+    public void onClick(View v) {
+        if (mode == 0){
+            switch (v.getId()){
+                case R.id.button1:
+                    qRScanner = new Intent(getApplicationContext() , QRScannerActivity.class);
+                    qRScanner.putExtra("mode", 1);
+                    startActivity(qRScanner);
+                    break;
+                case R.id.button2:
+                case R.id.button3:
+                case R.id.button4:
+            }
+        }else{
+            switch (v.getId()){
+                case R.id.button1:
+                    application = new Intent(getApplicationContext(), ApplicationActivity.class);
+                    startActivity(application);
+                    break;
+                case R.id.button2:
+                    qRScanner = new Intent(getApplicationContext() , QRScannerActivity.class);
+                    qRScanner.putExtra("mode", 0);
+                    startActivity(qRScanner);
+                    break;
+                case R.id.button3:
+                case R.id.button4:
+            }
         }
+
     }
 }

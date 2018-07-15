@@ -1,23 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuActivity">
+    tools:context=".MenuActivity"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto">
 
-    <com.zql.android.cardmenulib.CardMenu
-        android:id="@+id/cardMenu"
+    <ImageView android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:id="@+id/userPic"
+        android:src="@drawable/default_user_image" />
+
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Welcome, User"
+        android:textAlignment="center"
+        android:layout_below="@id/userPic"
+        android:layout_marginTop="10dp"
+        android:id="@+id/welcome_text"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/center"></View>
+
+    <Button
+        android:layout_height="100dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:id="@+id/button1"
+        android:layout_below="@id/welcome_text"
+        android:layout_toLeftOf="@id/center"
+        android:layout_margin="15dp"/>
+
+    <Button
+        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:id="@+id/button3"
+        android:layout_below="@id/button1"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@id/center"
+        android:layout_margin="15dp"/>
+
+    <Button
+        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:id="@+id/button2"
+        android:layout_below="@id/welcome_text"
+        android:layout_toRightOf="@id/center"
+        android:layout_margin="15dp"/>
+
+    <Button
+        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:id="@+id/button4"
+        android:layout_below="@id/button3"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/center"
+        android:layout_margin="15dp"/>
 
 
-        <FrameLayout
-            android:id="@+id/main_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/white">
-        </FrameLayout>
-    </com.zql.android.cardmenulib.CardMenu>
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

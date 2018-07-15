@@ -31,6 +31,7 @@
         <activity android:name=".MenuActivity" />
         <activity android:name=".QRScannerActivity" />
         <activity android:name=".ApplicationActivity" />
+<<<<<<< HEAD
         <activity android:name=".StatusActivity" />
         <activity android:name=".MapActivity" />
 
@@ -40,10 +41,23 @@
 
 
         <activity android:name=".ReportActivity"
+=======
+        <!-- <activity android:name=".MapActivity" /> -->
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDtCb1xDhz37o-1C1sjCGp4muVl7E8fuuA" />
+
+        <activity android:name=".StatusActivity" />
+        <activity
+            android:name=".ReportActivity"
+>>>>>>> 7b399b90c8c91ea98f8ca7eb9e4e64348b1bff53
             android:label="Aduan">
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".StatusActivity"/>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".StatusActivity" />
         </activity>
+        <activity android:name=".Status2Activity"></activity>
     </application>
 
 </manifest>
