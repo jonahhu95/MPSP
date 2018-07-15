@@ -35,7 +35,7 @@ public class QRScannerActivity extends AppCompatActivity {
         checkPermission();
         getSupportActionBar().hide();
         scannerView = findViewById(R.id.scanner_view);
-        statusActivity = new Intent(getApplicationContext() , StatusActivity.class);
+        statusActivity = new Intent(getApplicationContext() , Status2Activity.class);
     }
 
     private void checkPermission() {

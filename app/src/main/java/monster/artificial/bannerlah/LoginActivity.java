@@ -47,8 +47,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
-        signUpActivity = new Intent(getApplicationContext() , SignupActivity.class);
-        menuActivity = new Intent(getApplicationContext() , MenuActivity.class);
+        signUpActivity = new Intent(getApplicationContext(), SignupActivity.class);
+        menuActivity = new Intent(getApplicationContext(), MenuActivity.class);
         d = new MaterialDialog.Builder(this)
                 .progress(false, 0, false)
                 .show();
@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         final FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser!=null){
+        if (currentUser != null) {
             currentUser.getIdToken(true)
                     .addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
                         public void onComplete(@NonNull Task<GetTokenResult> task) {
@@ -77,23 +77,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         }
         d.dismiss();
-        loginButton = (Button)findViewById(R.id.btn_login);
-        emailText = (EditText)findViewById(R.id.input_email);
-        passwordText = (EditText)findViewById(R.id.input_password);
-        signupLink = (TextView)findViewById(R.id.link_signup);
+        loginButton = (Button) findViewById(R.id.btn_login);
+        emailText = (EditText) findViewById(R.id.input_email);
+        passwordText = (EditText) findViewById(R.id.input_password);
+        signupLink = (TextView) findViewById(R.id.link_signup);
         loginButton.setOnClickListener(this);
         signupLink.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_login:
                 String email = String.valueOf(emailText.getText());
                 String password = String.valueOf(passwordText.getText());
-                if(email.isEmpty() || password.isEmpty())
+                if (email.isEmpty() || password.isEmpty())
                     break;
-                login(email,password);
+                login(email, password);
                 break;
             case R.id.link_signup:
                 startActivity(signUpActivity);
@@ -102,7 +102,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void login(String email, String password){
+    private void login(String email, String password) {
         loginButton.setEnabled(false);
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -128,7 +128,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 });
     }
 
-    private void loginSuccess(){
+    private void loginSuccess() {
         startActivity(menuActivity);
         finish();
     }

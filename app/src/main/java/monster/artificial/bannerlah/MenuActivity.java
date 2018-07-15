@@ -12,7 +12,7 @@ import java.util.List;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private List<String> function_mpsp = Arrays.asList("Validate Banner", "Banner Locations", "Reports");
+    private List<String> function_mpsp = Arrays.asList("Mengesahkan Banner", "Lokasi Banner", "Aduan");
     private List<String> function_applicant = Arrays.asList("Permohonan Memasang", "Pengaktifan Lesen");
     private Button button1, button2, button3, button4;
     private int mode = 0;
