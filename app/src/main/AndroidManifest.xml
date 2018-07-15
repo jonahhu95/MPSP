@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
         <activity
-            android:name=".MapActivity"
+            android:name=".LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,12 +31,14 @@
         <activity android:name=".MenuActivity" />
         <activity android:name=".QRScannerActivity" />
         <activity android:name=".ApplicationActivity" />
-        <!--<activity android:name=".MapActivity" />-->
+        <activity android:name=".StatusActivity" />
+        <activity android:name=".MapActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDtCb1xDhz37o-1C1sjCGp4muVl7E8fuuA"/>
-        <activity android:name=".StatusActivity" />
+            android:value="@string/google_maps_key" />
+
+
         <activity android:name=".ReportActivity"
             android:label="Aduan">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
