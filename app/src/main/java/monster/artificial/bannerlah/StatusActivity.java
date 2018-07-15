@@ -50,6 +50,7 @@ public class StatusActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(StatusActivity.this, MapActivity.class);
                 startActivity(i);
+                finish();
             }
         });
 
