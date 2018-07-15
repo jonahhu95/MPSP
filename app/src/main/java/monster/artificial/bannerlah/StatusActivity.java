@@ -48,8 +48,17 @@ public class StatusActivity extends AppCompatActivity {
         mDoneBtn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(StatusActivity.this, ReportActivity.class);
+                Intent i = new Intent(StatusActivity.this, MapActivity.class);
                 startActivity(i);
+            }
+        });
+
+        mCancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(StatusActivity.this, MapActivity.class);
+                startActivity(i);
+                finish();
             }
         });
     }

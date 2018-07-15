@@ -1,5 +1,6 @@
 package monster.artificial.bannerlah;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
@@ -8,6 +9,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -51,6 +53,17 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Location, 15));
             v1 += 0.000075;
             v2 += 0.000250;
+
+            mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                @Override
+                public boolean onMarkerClick(Marker marker) {
+                    Intent i = new Intent(MapActivity.this, StatusActivity.class);
+                    startActivity(i);
+                    finish();
+                    //Using position get Value from arraylist
+                    return false;
+                }
+            });
         }
 
         v1 = 5.369074;
