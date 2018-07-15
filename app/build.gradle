@@ -40,10 +40,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-<<<<<<< HEAD
-=======
-    implementation 'com.google.android.gms:play-services-maps:11.6.0'
->>>>>>> 7b399b90c8c91ea98f8ca7eb9e4e64348b1bff53
 }
 
 apply plugin: 'com.google.gms.google-services'
