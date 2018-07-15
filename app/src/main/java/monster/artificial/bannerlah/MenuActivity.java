@@ -16,7 +16,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     private List<String> function_applicant = Arrays.asList("Permohonan Memasang", "Pengaktifan Lesen");
     private Button button1, button2, button3, button4;
     private int mode = 0;
-    private Intent qRScanner, application, maps;
+    private Intent qRScanner, application, maps, report;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +72,10 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                     startActivity(maps);
                     break;
                 case R.id.button3:
+                    report = new Intent(getApplicationContext(), ReportActivity.class);
+                    startActivity(report);
+                    break;
+
                 case R.id.button4:
             }
         }else{
